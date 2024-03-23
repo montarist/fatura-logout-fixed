@@ -35,7 +35,7 @@ const COMMANDS = {
     "RG_BASITFATURA"
   ],
   sendSignSMSCode: ["EARSIV_PORTAL_SMSSIFRE_GONDER", "RG_SMSONAY"],
-  verifySMSCode: ["EARSIV_PORTAL_SMSSIFRE_DOGRULA", "RG_SMSONAY"],
+  verifySignSMSCode: ["EARSIV_PORTAL_SMSSIFRE_DOGRULA", "RG_SMSONAY"],
   getUserData: ["EARSIV_PORTAL_KULLANICI_BILGILERI_GETIR", "RG_KULLANICI"],
   updateUserData: ["EARSIV_PORTAL_KULLANICI_BILGILERI_KAYDET", "RG_KULLANICI"]
 
@@ -117,7 +117,7 @@ async function logout(token) {
   const response = await fetch(`${ENV[CURRENT_ENV].BASE_URL}/earsiv-services/assos-login`, {
     ...DEFAULT_REQUEST_OPTS(),
     referrer: `${ENV[CURRENT_ENV].BASE_URL}/intragiris.html`,
-    body: `assoscmd=${CURRENT_ENV === 'PROD' ? 'anologin' : 'logout'}&rtype=json&token=${token}&`,
+    body: `assoscmd=${CURRENT_ENV === 'PROD' ? 'logout' : 'logout'}&rtype=json&token=${token}&`,
   });
   const json = await response.json();
   return json.data; // send redirect url
