@@ -235,7 +235,7 @@ async function createDraftInvoice(token, invoiceDetails = {}) {
     vergilerDahilToplamTutar: invoiceDetails.grandTotalInclVAT.toFixed(2).toString(),
     toplamMasraflar: invoiceDetails.toplamMasraflar || "0",
     odenecekTutar: invoiceDetails.paymentTotal.toFixed(2).toString(),
-    not: convertPriceToText(invoiceDetails.paymentTotal)
+    not: invoiceDetails.note ? invoiceDetails.note : convertPriceToText(invoiceDetails.paymentTotal)
  
   };
   const invoice = await runCommand(
