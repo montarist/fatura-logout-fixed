@@ -218,9 +218,9 @@ async function createDraftInvoice(token, invoiceDetails = {}) {
       iskontoOrani: item.discountRate || 0,
       iskontoTutari: (item.discountAmount || 0).toFixed(2).toString() || "",
       iskontoNedeni: item.discountReason || "",
-      malHizmetTutari: ((item.quantity || 0) * (item.unitPrice || 0)).toFixed(
+      malHizmetTutari: item.totalServicePrice ? item.totalServicePrice.toFixed(2).toString() : ((item.quantity || 0) * (item.unitPrice || 0)).toFixed(
         2
-      ).toString() || item.totalServicePrice.toFixed(2).toString(),
+      ).toString(),
       kdvOrani: (item.VATRate || 0).toFixed(0).toString(),
       vergiOrani: item.taxRate || 0,
       kdvTutari: (item.VATAmount || 0).toFixed(2).toString(),
